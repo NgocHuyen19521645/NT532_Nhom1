@@ -7,7 +7,7 @@ public class IndexThreshold implements Serializable {
     private boolean isGreater;
     private boolean isUse;
 
-    public float getValue() {
+    public float getValue() { ///dsadasd
         return value;
     }
 

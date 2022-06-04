@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đặt ngưỡng cảnh báo"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvGreater"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhiệt độ"
+        app:layout_constraintBottom_toBottomOf="@+id/skbTemp"
+        app:layout_constraintEnd_toStartOf="@id/skbTemp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/skbTemp" />
+
+    <SeekBar
+        android:id="@+id/skbTemp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:max="50"
+        android:min="0"
+        app:layout_constraintBottom_toBottomOf="@+id/edtTemp"
+        app:layout_constraintEnd_toStartOf="@id/ckbTempGreater"
+        app:layout_constraintStart_toEndOf="@id/tvTemp"
+        app:layout_constraintTop_toTopOf="@+id/edtTemp" />
+
+    <EditText
+        android:id="@+id/edtTemp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="0"
+        android:textAlignment="center"
+        android:selectAllOnFocus="true"
+
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@id/edtHumid"
+        app:layout_constraintEnd_toStartOf="@id/tvTempUnit"
+        app:layout_constraintStart_toEndOf="@id/ckbTempGreater"
+        app:layout_constraintTop_toBottomOf="@id/tvGreater" />
+
+    <TextView
+        android:id="@+id/tvTempUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="độ C"
+        app:layout_constraintBottom_toBottomOf="@id/edtTemp"
+        app:layout_constraintEnd_toStartOf="@id/ckbTemp"
+        app:layout_constraintStart_toEndOf="@id/edtTemp"
+        app:layout_constraintTop_toTopOf="@id/edtTemp" />
+
+    <CheckBox
+        android:id="@+id/ckbTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/tvTempUnit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTempUnit"
+        app:layout_constraintTop_toTopOf="@+id/tvTempUnit"
+        app:layout_constraintVertical_bias="0.448" />
+
+    <TextView
+        android:id="@+id/tvHumid"
+        android:layout_width="56dp"
+        android:layout_height="19dp"
+        android:text="Độ ẩm"
+        app:layout_constraintBottom_toBottomOf="@+id/skbHumid"
+        app:layout_constraintEnd_toEndOf="@id/tvTemp"
+        app:layout_constraintStart_toStartOf="@+id/tvTemp"
+        app:layout_constraintTop_toTopOf="@+id/skbHumid" />
+
+    <SeekBar
+        android:id="@+id/skbHumid"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:min="0"
+        android:max="100"
+        app:layout_constraintBottom_toBottomOf="@+id/edtHumid"
+        app:layout_constraintStart_toStartOf="@id/skbTemp"
+        app:layout_constraintTop_toTopOf="@+id/edtHumid" />
+
+    <EditText
+        android:id="@+id/edtHumid"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        android:textAlignment="center"
+        android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@id/edtGas"
+        app:layout_constraintStart_toStartOf="@id/edtTemp"
+        app:layout_constraintTop_toBottomOf="@id/edtTemp" />
+
+    <TextView
+        android:id="@+id/tvHumidUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        app:layout_constraintBottom_toBottomOf="@+id/edtHumid"
+        app:layout_constraintStart_toStartOf="@id/tvTempUnit"
+        app:layout_constraintTop_toTopOf="@+id/edtHumid" />
+
+    <CheckBox
+        android:id="@+id/ckbHumid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@id/edtHumid"
+        app:layout_constraintStart_toStartOf="@id/ckbTemp"
+        app:layout_constraintTop_toTopOf="@id/edtHumid" />
+
+    <TextView
+        android:id="@+id/tvGas"
+        android:layout_width="52dp"
+        android:layout_height="27dp"
+        android:text="Khí gas"
+        app:layout_constraintBottom_toBottomOf="@+id/skbGas"
+        app:layout_constraintEnd_toEndOf="@+id/tvHumid"
+        app:layout_constraintStart_toStartOf="@+id/tvHumid"
+        app:layout_constraintTop_toTopOf="@+id/skbGas" />
+
+    <SeekBar
+        android:id="@+id/skbGas"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:min="0"
+        android:max="40000"
+        app:layout_constraintBottom_toBottomOf="@+id/edtGas"
+        app:layout_constraintStart_toStartOf="@+id/skbHumid"
+        app:layout_constraintTop_toTopOf="@+id/edtGas" />
+
+    <EditText
+        android:id="@+id/edtGas"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        android:textAlignment="center"
+        android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@id/edtMessage"
+        app:layout_constraintStart_toStartOf="@+id/edtHumid"
+        app:layout_constraintTop_toBottomOf="@+id/edtHumid" />
+
+    <TextView
+        android:id="@+id/tvGasUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ppm"
+        app:layout_constraintBottom_toBottomOf="@id/edtGas"
+        app:layout_constraintStart_toStartOf="@id/tvHumidUnit"
+        app:layout_constraintTop_toTopOf="@id/edtGas" />
+
+    <CheckBox
+        android:id="@+id/ckbGas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/tvGasUnit"
+        app:layout_constraintStart_toStartOf="@id/ckbHumid"
+        app:layout_constraintTop_toTopOf="@id/tvGasUnit" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thông báo"
+        app:layout_constraintBottom_toBottomOf="@id/edtMessage"
+        app:layout_constraintEnd_toEndOf="@id/tvGas"
+        app:layout_constraintStart_toStartOf="@+id/tvGas"
+        app:layout_constraintTop_toTopOf="@+id/edtMessage" />
+
+    <EditText
+        android:id="@+id/edtMessage"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@id/btSave"
+        app:layout_constraintStart_toStartOf="@id/skbGas"
+        app:layout_constraintTop_toBottomOf="@+id/edtGas" />
+
+    <Button
+        android:id="@+id/btSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu kết quả"
+        app:layout_constraintBottom_toTopOf="@id/tvLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtMessage" />
+
+    <TextView
+        android:id="@+id/tvLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Các ngưỡng đã lưu:"
+        app:layout_constraintBottom_toTopOf="@id/lvMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btSave" />
+
+    <ListView
+        android:id="@+id/lvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabel" />
+
+    <CheckBox
+        android:id="@+id/ckbTempGreater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/edtTemp"
+        app:layout_constraintEnd_toStartOf="@+id/edtTemp"
+        app:layout_constraintStart_toEndOf="@+id/skbTemp"
+        app:layout_constraintTop_toTopOf="@+id/edtTemp" />
+
+    <CheckBox
+        android:id="@+id/ckbHumidGreater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/edtHumid"
+        app:layout_constraintEnd_toStartOf="@+id/edtHumid"
+        app:layout_constraintStart_toEndOf="@+id/skbHumid"
+        app:layout_constraintTop_toTopOf="@+id/edtHumid" />
+
+    <CheckBox
+        android:id="@+id/ckbGasGreater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/edtGas"
+        app:layout_constraintEnd_toStartOf="@+id/edtGas"
+        app:layout_constraintStart_toEndOf="@+id/skbGas"
+        app:layout_constraintTop_toTopOf="@+id/edtGas" />
+
+    <TextView
+        android:id="@+id/tvGreater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=">=?"
+        app:layout_constraintBottom_toTopOf="@+id/ckbTempGreater"
+        app:layout_constraintStart_toStartOf="@+id/ckbTempGreater"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <Button
+        android:id="@+id/idbtnHomeback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Back To Home"
+        app:layout_constraintBottom_toTopOf="@+id/tvLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btSave"
+        app:layout_constraintTop_toBottomOf="@+id/edtMessage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

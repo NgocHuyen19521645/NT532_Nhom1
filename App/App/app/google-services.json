@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "334458975585",
+    "firebase_url": "https://trusty-gradient-326214-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "trusty-gradient-326214",
+    "storage_bucket": "trusty-gradient-326214.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334458975585:android:2f72352f4666e7c0e58120",
+        "android_client_info": {
+          "package_name": "com.example.monitorapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334458975585-ee26g7nmiasblnr1oo7qser74a0gvsn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL8IpZlJd3KsyIWkYoPAr6n5t1QlyvGLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334458975585-ee26g7nmiasblnr1oo7qser74a0gvsn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

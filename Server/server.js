@@ -50,9 +50,9 @@ ref.on('value', (snapshot) => {
     var key = Object.keys(snapshot.val());
     temp = snapshot.val()[key].Temperature;
     gas = snapshot.val()[key].Gas;
-    console.log(temp, gas);
+    console.log(snapshot.val());
 
-    if(temp>0 & gas>0) {
+    if(temp>20 | gas>15) {
         fireFlag=1;
     }
     else {

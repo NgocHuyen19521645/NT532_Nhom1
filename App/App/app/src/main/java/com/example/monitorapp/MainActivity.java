@@ -1,5 +1,6 @@
 package com.example.monitorapp;
 
+import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -232,8 +234,56 @@ public class MainActivity extends AppCompatActivity  implements OnChartValueSele
 
             }
         });
-        //
 
+        // FireFlag
+        DatabaseReference myRef2 = database.getReference("controlSignal");
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Query query = myRef2.orderByKey().limitToLast(1);
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            int fireFlag = Integer.parseInt(snapshot.getValue().toString());
+                            if (fireFlag==1) {
+                                notification("Default", "Has Fire!!!");
+                                Warning warning = new Warning(Calendar.getInstance().getTime().toString(), "Has Fire!!!");
+                                warningArrayList.add(warning);
+                                listView.setAdapter(warningAdapter);
+                                warningAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+                warningArrayList.clear();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        //
+//
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String item =  spinner.getItemAtPosition(i).toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
         reference = FirebaseDatabase.getInstance().getReference().child("DHTSensor");
         reference.addValueEventListener(new ValueEventListener() {
             @Override

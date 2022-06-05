@@ -79,6 +79,7 @@ public class MainActivity3 extends AppCompatActivity implements OnChartValueSele
             }
         });
 
+        //DHT Sensor
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("DHTSensor");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -131,6 +132,32 @@ public class MainActivity3 extends AppCompatActivity implements OnChartValueSele
             }
         });
 
+        // FireFlag
+        DatabaseReference myRef2 = database.getReference("controlSignal");
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Query query = myRef2.orderByKey().limitToLast(1);
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            int fireFlag = (int)snapshot.getValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

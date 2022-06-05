@@ -31,7 +31,7 @@
 #define FIREBASE_HOST "trusty-gradient-326214-default-rtdb.asia-southeast1.firebasedatabase.app"
 #define FIREBASE_AUTH "j8bRnAxzJSi5yOm0hytksLqDQPf0ktswSRYO2gqJ"
 
-String serverName = "http://172.31.250.7:11111/iot/create";
+String serverName = "http://10.0.23.250:11112/iot/create";
 unsigned long lastTime = 0;
 unsigned long timerDelay = 5000;
 
@@ -43,8 +43,8 @@ unsigned long timerDelay = 5000;
 DHT dht(DHTPIN, DHTTYPE);
 
 // Wifi SSID, pass
-const char *ssid = "UiTiOt-E3.1";
-const char *pass = "UiTiOtAP";
+const char *ssid = "Giangnam Coffee";
+const char *pass = "";
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org");
@@ -52,13 +52,14 @@ NTPClient timeClient(ntpUDP, "pool.ntp.org");
 void setup()
 {
   Serial.begin(9600);
+  pinMode(D2,OUTPUT);
   Serial.println("DHTxx test!");
 
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.hostname("Wemos D1");
-  WiFi.begin(ssid, pass);
+  WiFi.begin(ssid);
 
   while (WiFi.status() != WL_CONNECTED)
   {
@@ -146,6 +147,15 @@ void loop()
   temperatureObject["Gas"] = gas;
   temperatureObject["Time"] = curTime;
   Firebase.set("/DHTSensor/" + String(epoch), temperatureObject);
+  int a = Firebase.getFloat("/controlSignal/fireFlag");
+  Serial.println(a);
+  if(a == 0){
+    digitalWrite(D2, LOW);
+  }
+  else{
+    digitalWrite(D2, HIGH);
+  }
+    
 
   if (Firebase.failed())
   {
@@ -154,9 +164,10 @@ void loop()
     return;
   }
   WiFiClient client;
-  int HTTP_PORT = 11111;
+  /*
+  int HTTP_PORT = 11112;
   String HTTP_METHOD = "POST";       // 172.31.250.6172.31.0.1
-  char HOST_NAME[] = "172.31.250.7"; // dia chi ip (luu y thay doi)
+  char HOST_NAME[] = "10.0.23.250"; // dia chi ip (luu y thay doi)
   String PATH_NAME = "/iot/create";
   String data = "temp=" + String(t) + "&gas=" + String(gas);
   Serial.println(data);
@@ -174,8 +185,6 @@ void loop()
     client.println("Connection: close");
     client.println();
     client.println(data);
-
-    // the server's disconnected, stop the client:
     client.stop();
   }
   String path = "/iot/data";
@@ -187,15 +196,10 @@ void loop()
     client.println("Connection: close");
     client.println();
     String c = "aAa";
-
     while (client.connected())
     {
       if (client.available())
       {
-        // read an incoming byte from the server and print it to serial monitor:
-        // c = client.readStringUntil('\r');
-        // Serial.print(c);
-        String c;
         while (client.available())
         {
           c = client.readStringUntil('\n');
@@ -211,13 +215,15 @@ void loop()
         Serial.println("----------------------");
         if ((String)c[c.length() - 3] == "1")
         {
-          digitalWrite(LED_BUILTIN, HIGH);
+          digitalWrite(D2, HIGH);
         }
         else
-          digitalWrite(LED_BUILTIN, LOW);
+          digitalWrite(D2, LOW);
       }
       // the server's disconnected, stop the client:
-      client.stop();
+      
     }
+    client.stop();
   }
+  delay(5000);*/
 }

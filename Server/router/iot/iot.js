@@ -7,8 +7,8 @@ Router.get('/data', get);
 
 
 function create(req, res) {
-  const {lux, distance} = req.body;
-  iotController.create(lux, distance)
+  const {temp, gas} = req.body;
+  iotController.create(temp, gas)
   .then( data => {
     res.json(data);
   })

@@ -5,15 +5,15 @@ var number = 0;
 function create(temp, gas) {
   return new Promise((resolve, reject) => {
     
-    if(temp > 30 & gas > 50)
+    if(temp < 3 & gas < 5)
     {
       number = 1;
     }
 
-    var message = 'Nhom XXXX !!!!';
+    var message = 'Nhom 1 !!!!';
     console.log(message);
     console.log('count: ' + number);
-    console.log('END !!!!!!!!!');
+    console.log('nt532_m21');
     resolve({
       error: false,
       message: 'Ngoc Huyen !!!!!!!!!',
